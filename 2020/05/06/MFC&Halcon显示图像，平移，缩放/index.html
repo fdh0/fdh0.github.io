@@ -30,12 +30,12 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="在MFC图片控件中利用Halcon函数库实现图片读取、保存是比较基本的操作。将图片控件句柄传入Halcon打开窗口”open_window”函数后，MFC无法正常响应鼠标消息。此时需要使用MFC“PreTranslateMessage”来获取鼠标坐标。利用Halcon “SetPart” 来设置显示的图像显示范围。 将图片控件句柄传入Halcon打开窗口”open_window”函数后，MFC无法">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://yoursite.com/2020/05/06/MFC&Halcon%E6%98%BE%E7%A4%BA%E5%9B%BE%E5%83%8F%EF%BC%8C%E5%B9%B3%E7%A7%BB%EF%BC%8C%E7%BC%A9%E6%94%BE/MFC%20Halcon/Untitled.png">
+<meta property="og:image" content="https://www.notion.so/MFC-Halcon-f392920f47914599b4c23a49cbf8ea6b#9b6d280b0c094633a46b202949243709">
 <meta property="article:published_time" content="2020-05-06T05:27:14.131Z">
-<meta property="article:modified_time" content="2020-05-06T05:32:57.376Z">
+<meta property="article:modified_time" content="2020-05-06T05:40:19.012Z">
 <meta property="article:author" content="FengDonghai">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/05/06/MFC&Halcon%E6%98%BE%E7%A4%BA%E5%9B%BE%E5%83%8F%EF%BC%8C%E5%B9%B3%E7%A7%BB%EF%BC%8C%E7%BC%A9%E6%94%BE/MFC%20Halcon/Untitled.png">
+<meta name="twitter:image" content="https://www.notion.so/MFC-Halcon-f392920f47914599b4c23a49cbf8ea6b#9b6d280b0c094633a46b202949243709">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -211,7 +211,7 @@ var themeMenus = {};
 <p>将图片控件句柄传入Halcon打开窗口”open_window”函数后，MFC无法正常响应鼠标消息。此时需要使用MFC“PreTranslateMessage”来获取鼠标坐标。</p>
 <p>接下来详细说明下步骤。</p>
 <h3 id="1-在界面上拉取一个静态文本框，用来显示图像"><a href="#1-在界面上拉取一个静态文本框，用来显示图像" class="headerlink" title="1. 在界面上拉取一个静态文本框，用来显示图像"></a>1. 在界面上拉取一个静态文本框，用来显示图像</h3><p>并修改文本框的属性-ID: <strong><code>IDC_STATIC_HALCON_IMG</code></strong></p>
-<p><img src="MFC%20Halcon/Untitled.png" alt="MFC%20Halcon/Untitled.png"></p>
+<p><img src="https://www.notion.so/MFC-Halcon-f392920f47914599b4c23a49cbf8ea6b#9b6d280b0c094633a46b202949243709" alt="MFC%20Halcon/Untitled.png"></p>
 <a id="more"></a>
 
 <h3 id="2-声明添加需要用到的变量"><a href="#2-声明添加需要用到的变量" class="headerlink" title="2. 声明添加需要用到的变量"></a>2. 声明添加需要用到的变量</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">HObject m_hImage;</span><br><span class="line">HTuple  m_hWidth;</span><br><span class="line">HTuple  m_hHeight;</span><br><span class="line">HTuple	hImgWnd;</span><br><span class="line"><span class="keyword">double</span>  m_dDispImagePartRow0;</span><br><span class="line"><span class="keyword">double</span>  m_dDispImagePartCol0;</span><br><span class="line"><span class="keyword">double</span>  m_dDispImagePartRow1;</span><br><span class="line"><span class="keyword">double</span>  m_dDispImagePartCol1;</span><br><span class="line">HTuple  m_hRowB, m_hColB, m_hRowE, m_hColE;</span><br><span class="line"><span class="keyword">int</span> m_iCursor;<span class="comment">//按下左键，滚轮滚动</span></span><br><span class="line"><span class="keyword">double</span> m_dXO, m_dYO;</span><br></pre></td></tr></table></figure>
